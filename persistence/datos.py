@@ -1,10 +1,15 @@
+# persistence/datos.py
+import binascii
+import os
+
 class RepositorioDatos:
     def __init__(self):
         self.estudiantes = []
         self.cursos = []
         self.matriculas = []
+        self.usuarios = []  # NUEVO: usuarios del sistema
 
-    # --- Estudiantes ---
+    # --- Estudiantes ---                          
     def guardar_estudiante(self, estudiante):
         self.estudiantes.append(estudiante)
 
@@ -42,3 +47,16 @@ class RepositorioDatos:
 
     def listar_matriculas(self):
         return self.matriculas
+
+    # --- Usuarios ---
+    def guardar_usuario(self, usuario):
+        self.usuarios.append(usuario)
+
+    def buscar_usuario(self, username):
+        for u in self.usuarios:
+            if u["username"] == username:
+                return u
+        return None
+
+    def listar_usuarios(self):
+        return self.usuarios

@@ -1,8 +1,9 @@
+# controller/negocio.py
 from persistence.datos import RepositorioDatos
 
 class SistemaAcademico:
-    def __init__(self):
-        self.repo = RepositorioDatos()
+    def __init__(self, repo: RepositorioDatos = None):
+        self.repo = repo if repo else RepositorioDatos()
 
     def registrar_estudiante(self, nombre, identificacion, carrera, semestre):
         if self.repo.buscar_estudiante(identificacion):
